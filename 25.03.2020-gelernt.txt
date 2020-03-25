@@ -1,0 +1,19 @@
+Video kurs : JavaScaript von Jannis Seemann
+Video fortschritt: noch offen: 16h,12min
+
+Neues gelernt(
+.ejs templates
+html insertAdjacentHTML()
+module.exports = ....
+liveSelectoren, dass schreiben von liveSelectoren, siehe  "/src/utilsdom.js"
+
+versuch !: eventListener selber zu schreiben siehe, "/src/utils/eventListener.js" nicht erfolgreich, neuer Versuch, morgen.
+
+webpackconfig.js Einstellungen
+arbeit mit Moudlen
+Ansteuerung von API...
+arbeit mit Funktion und Prototype
+)
+
+ende: 18:02, noch offen Video: 15h,27min
+
