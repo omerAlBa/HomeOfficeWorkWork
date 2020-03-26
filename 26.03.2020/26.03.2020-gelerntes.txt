@@ -1,0 +1,15 @@
+Angefangen um 9:42, noch Kurs länge zudem Zeitpunkt: 15h,17min 
+Ende gegen 17:30: noch kurs länge zum jetzigen Zeitpunkt: 13h,37min
+
+Neues gelernt:{
+    Unit-Test(mit hilfe von JESTjs),
+    Error handling(Promise,try-catch, eigene Fehler auswerfen(throw)),
+    instanceOf "name of Function",
+    vorteile von Konstruktor Functionen beim testen,
+    asynchrones Testen, Api Testen (mocking),
+    HTML DOM unitTest, mit hilfe von "jsDOM"
+}
+
+fertig {
+    Nährwerte berechnen siehe 25.03.2020 und 26.03.2020
+}
