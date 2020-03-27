@@ -1,0 +1,20 @@
+angefangen: 8:50, zu dem Zeitpunkt noch zu schauende = 13h,37min
+ende: 18:00, zu dem Zeitpunkt noch zu schauende = 11h,41min
+
+neues gelernt:{
+    aufruf von funktionen zu testen, ohne direkte folgen des scripts (jest.fn()),
+    abi anfrage testen... noch unsicher, mithilfe von "mocking"
+}
+
+tätigkeit: nährwerte getestet...
+schwierigkeiten: {
+    vergesse, dass einige functionen async sind, verbrauch von Zeit und aufwand.
+    aufwändig, einzelene Dom elemente zu erstllen und an "nartürlichen Elemente", die der Dom 
+    mit sich bringt. Beispiel(value, innerText <==> textConntent),
+    
+    mocking <--- Zeitfresser.
+}
+
+morgen:{ fertigstellung von den Testen und "Template-String" cooles ding, kann ich aber.
+    moderne Javascript funktionen
+}
