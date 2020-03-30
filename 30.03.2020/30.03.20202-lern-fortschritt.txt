@@ -1,0 +1,17 @@
+Wann habe ich angefangen : 9:30, video zu dem Zeitpunkt noch offen 13h37min
+
+was habe ich heute gerlent:{
+1.) tagged template String,
+2.) array functionen{
+		.map,
+		.filter,
+		.find,
+		.findIndex,
+		.some
+		.reduce <--- mit der coolsten function!
+	}
+3.) async Function (await)
+}
+
+Ende 17:15, zu dem Zeitpunkt noch offen 10h50min
+
