@@ -11,6 +11,9 @@ was habe ich heute gerlent:{
 		.reduce <--- mit der coolsten function!
 	}
 3.) async Function (await)
+4.) übergabe von objekten an Funktionen,
+5.) mordernes-js angefangen!
+5.2) classen < keine klasse sondern nur eine andere Schreibweise von den funktions konstruktor.
 }
 
 Ende 17:15, zu dem Zeitpunkt noch offen 10h50min
