@@ -1,16 +1,16 @@
 angefangen: zu der zeit nochoffenen vom video 10h55min
 
-heute tätigkeit:{
-	es6 schreib weise => webpack schwierigkeiten, lösung gefunden und eingebaut.
+heute tÃ¤tigkeit:{
+	es6 schreib weise => webpack schwierigkeiten, lÃ¶sung gefunden und eingebaut.
 	installation von @babel-runtime
 	webpack anpassung,
-	Umschreibung des Nährwert Projekt
-	Benutzung von array Functionen, schwierigkeiten bei der Logik umsetzung und rückgabe wertes ist noch unklar.
+	Umschreibung des NÃ¤hrwert Projekt
+	Benutzung von array Functionen, schwierigkeiten bei der Logik umsetzung und rÃ¼ckgabe wertes ist noch unklar.
 	anpassung von Jest <-- unittests.
 	
 	Einrichtung eines einfachen Web Servers, erste schritte des configuration.
 	Arbeit mit telenet.
-	Angreifbare möglichkeiten eines WebServer mit hilfe von navigations Anweisungen umgehen, funktion "path.normalize"
+	Angreifbare mÃ¶glichkeiten eines WebServer mit hilfe von navigations Anweisungen umgehen, funktion "path.normalize"
 	Request und Response veranschaulichung. 
 }
 
@@ -21,6 +21,8 @@ Neues gelernt: {
 	manuelle "contentHeader" Beschreibung.
 	"response ende"
 	warte Zeit einstellung angefangen.
-	übertragung von bild + contentHeader anpassung
+	Ã¼bertragung von bild + contentHeader anpassung
 	"/" und anfrage angefangen	
 }
+
+Ende um 17:45 vom Video noch offen, "keine Angabe mÃ¶glich, die anzeige ist irgendwie bei 10:55 fest geblieben", ich meine aber dass ich heute min. 8h:51min bin
