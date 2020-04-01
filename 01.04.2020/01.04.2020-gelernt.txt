@@ -1,0 +1,12 @@
+Angefangen 08:45 offene vom Video ?? 
+Ende 17:30 Uhr video kurs ist beendet
+
+heutige Tätigkeit:{
+    Umschreibung der for schleifen in die array functionen, langsam komme ich dahinter.
+    Unittest verständnis einfaches niveau.
+    Benutzung von Jest für den Unitest um fehler oder erfolgreiche Test schneller zu erkennen.
+    Web Server, selbst aufstellen combination mit der "https://api.nal.usda.gov" - "/fdc/v1/search"
+    Web Server verschicken und anfordern von JSON Bilder oder auch HTML seiten.
+    Web Server muss aber noch einwenig vertieft werden um das bestehende verständnis zu vertiefen. niveau niedrig.
+}
+
