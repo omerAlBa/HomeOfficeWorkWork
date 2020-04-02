@@ -1,0 +1,30 @@
+Angefangen:{ 09:30 }
+
+Heutige tätigkeit:{
+	Webserver configuration erweitert.
+	Auslieferung file die an einem html gebunden sind,
+	Einbaung von redirect mit dem Status 302,
+	erkennet mime-type und gibt diese an den Client weiter,
+	Recherche von js source map,
+	fertigstellung vom webserver.
+}
+
+Webserver info:{
+	port: 616,
+	reagiert auf:{
+		"/" : Begrüßung,
+		"/json": sendet einen JSON,
+		"/home": leitet den status 302 an der Client und leitet es an index.html weiter,
+		"/main.css": ausgabe eines 
+		"/index.html": gibt das Projekt "Nährwertrechner" aus mit css elementen und js Datein.
+		alle andern such anfragen, sollten mit dem Status 404 ausgegeben werden.
+	} 
+}
+
+Testen? 
+
+Schritt 1. Projekt runterladen
+Schritt 1.1 cmd im Projekt starten Verzeichnis '02.04.2020' starten
+Schritt 2. in der cmd 'npm install' eingeben, alle benötigten Datein werden heruntergeladen, ohne diesen Schritt ist es nicht möglich das Projekt zu starten!, 
+Schritt 3. in der cmd, eingabe 'npm run start:server' => konvertiert 'nodejs/modernesJs+es6/js' und 'sass' datein in 'mini js' und 'mini css' und deren 'source maps'
+alternative Schritt 3. cmd eingabe 'node webserver/app.js' => startet den Server mit allen gewünschten Datein die zur Verfügung stehen. siehe 'Webserver info.reagiert auf'
