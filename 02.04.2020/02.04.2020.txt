@@ -1,22 +1,41 @@
 Angefangen:{ 09:30 }
 
-Heutige tätigkeit:{
+Heutige tÃ¤tigkeit:{
 	Webserver configuration erweitert.
 	Auslieferung file die an einem html gebunden sind,
 	Einbaung von redirect mit dem Status 302,
 	erkennet mime-type und gibt diese an den Client weiter,
 	Recherche von js source map,
 	fertigstellung vom webserver.
+} 
+
+Was habe ich gelernt: {
+	-abfragen einer api,
+	-array functionen,
+	-bessers verstÃ¤ndis was ein webserver ist und wie die interaktion statt findet,
+	-was konstruktor Functionen sind,
+	-wie "this" verhÃ¤lt... (bind, apply)
+	-was klassen sind, vererbung,
+	-async functionen,
+	-es6 javascript,
+	-ejs templates,
+}
+
+was wÃ¼rde ich gerne lernen: {
+	-tiefers verstÃ¤ndnis fÃ¼r den webserver, weitere MÃ¶glichkeiten DB usw,
+	-was genau unit8array sind,
+	-binare daten auslesen, die funktion.
+	-python :D
 }
 
 Webserver info:{
 	port: 616,
 	reagiert auf:{
-		"/" : Begrüßung,
+		"/" : BegrÃ¼ÃŸung,
 		"/json": sendet einen JSON,
 		"/home": leitet den status 302 an der Client und leitet es an index.html weiter,
 		"/main.css": ausgabe eines 
-		"/index.html": gibt das Projekt "Nährwertrechner" aus mit css elementen und js Datein.
+		"/index.html": gibt das Projekt "NÃ¤hrwertrechner" aus mit css elementen und js Datein.
 		alle andern such anfragen, sollten mit dem Status 404 ausgegeben werden.
 	} 
 }
@@ -25,6 +44,6 @@ Testen?
 
 Schritt 1. Projekt runterladen
 Schritt 1.1 cmd im Projekt starten Verzeichnis '02.04.2020' starten
-Schritt 2. in der cmd 'npm install' eingeben, alle benötigten Datein werden heruntergeladen, ohne diesen Schritt ist es nicht möglich das Projekt zu starten!, 
+Schritt 2. in der cmd 'npm install' eingeben, alle benÃ¶tigten Datein werden heruntergeladen, ohne diesen Schritt ist es nicht mÃ¶glich das Projekt zu starten!, 
 Schritt 3. in der cmd, eingabe 'npm run start:server' => konvertiert 'nodejs/modernesJs+es6/js' und 'sass' datein in 'mini js' und 'mini css' und deren 'source maps'
-alternative Schritt 3. cmd eingabe 'node webserver/app.js' => startet den Server mit allen gewünschten Datein die zur Verfügung stehen. siehe 'Webserver info.reagiert auf'
+alternative Schritt 3. cmd eingabe 'node webserver/app.js' => startet den Server mit allen gewÃ¼nschten Datein die zur VerfÃ¼gung stehen. siehe 'Webserver info.reagiert auf'
