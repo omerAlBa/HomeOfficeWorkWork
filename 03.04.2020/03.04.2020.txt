@@ -1,0 +1,9 @@
+Begonnen : 09:45, Videokurs = "python-bootcamp", zudem Zeitpunkt noch vom Video offen: 30h30min
+
+heutige Tätigkeit:{
+	python grundlagen (function erstellen, listen, datentypen)
+	Aufgaben bearbeitet, siehe Aufgabe1.
+	zugriff auf Datein(vor und nachteile vom whit)
+}
+
+Ende um gegen 18:20 noch vom Kurs offen: 26h45min
