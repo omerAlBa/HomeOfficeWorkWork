@@ -1,20 +1,20 @@
-Angefangen: 8:45 noch offen vom Video kurs = 18h,20m
+Angefangen: 8:45 noch offen vom Video kurs = 28h,20m
 
-heutige Tätigkeit:{
+heutige TÃ¤tigkeit:{
 	arbeiten mit csv Datein auslesen und in eine Liste umwandeln.
 	grafische Darstellung mit hilfe von matplotlib.pyplot
 	forstellung von Tuble, <== komisches ding...
 	object oriented programming < python, Daten kabselung(__init__ als construtor)
 	kabselung von funktionen und listen usw...
-	__repr__ / __str__ ungenau wofür es gut sein soll
+	__repr__ / __str__ ungenau wofÃ¼r es gut sein soll
 	List comprehension
 	python slicing
 	Dictionary + schleifen, zusammen arbeit mit tuble
 
 }
 
-Aufwändig/Zeitintensive:{
-	import von matplotlib.pyplot, sehr aufwändig,
+AufwÃ¤ndig/Zeitintensive:{
+	import von matplotlib.pyplot, sehr aufwÃ¤ndig,
 	csv datei musste gesucht werden,
 	aufgaben + aufschreiben neuer information.
 }
