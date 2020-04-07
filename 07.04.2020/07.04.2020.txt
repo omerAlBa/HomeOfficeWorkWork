@@ -1,0 +1,12 @@
+Begonnen um 08:45 noch offen vom Videokurs 24h 40min
+
+heutige Tätigkeit:{
+	vererbung (super())
+	Type überprüfung type() gibt die direkte class / objekt wieder
+	isinstance(object) berücksichtigt Vererbung rückgabe Boolean
+	umschreibung der len function 
+	Module in python und Module in Ordner + __init__.py Ordner Verzeichnis
+	Aufgaben zum Thema Objekt Orientiertes Programmieren
+}
+
+Ende 17:00Uhr noch offen vom Videokurs 22h
