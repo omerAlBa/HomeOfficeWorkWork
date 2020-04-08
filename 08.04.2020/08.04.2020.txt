@@ -1,0 +1,12 @@
+Angefangen 08:00 bis 16:45
+Video kurs heute morgen noch offen 22h, feierabend = 19h:15min
+
+tätigkeit:{
+	arbeiten mit dem Module = "crawler"
+	kennenlernen von __dict__ um alle Eigenschaften aus zugeben
+	kennenlernen von urljoin
+	"crawlen" von einer webseite mit mehreren Seiten.
+	"None" gleich zu undefinded in js
+	csv.writer erstellen von einer exel datei
+	angefangen mit "Generatoren in crawler"
+}
