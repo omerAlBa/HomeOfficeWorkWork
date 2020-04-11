@@ -1,0 +1,19 @@
+angefangen um 08:00 noch offen vom Video = 19h:15min
+
+Feierabend gegn 17:30 noch offen vom Video 17h53min
+
+tätigkeit:{
+	datenstrukturen kennengelernt,
+	Parameter und functionen "refernenzen vertieft" (primitive Datentypen und Datenstrukturen)
+	-> wann kopie erstellt werden und wann der Speicherort mitgegeben wird,
+	queue Priorität kennen gelernt,
+	arbeit mit "set",
+	kennen lernen von "lambda",sehr unsicher... muss wiederholt werden,
+	error handling, "try" & "except" & "finaly"
+	Aufgaben:{
+		Aufgabe1 = "Öffne die ../data/names.csv - Datei als .csv-Datei und berechne die Anzahl der verschiedenen Vornamen, die in dieser Datei aufgelistet sind!",
+		Aufgabe2 = "error handling",
+		Aufgabe3 = "welcher Name wurde am häufigsten vergeben"
+		
+	}
+}
