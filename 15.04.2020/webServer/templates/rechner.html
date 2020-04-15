@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<div>
+    <form method="GET" action="/currency">
+        <label for="währung1">Währung:</label>
+        <input type="text" type="number"  value="{{element['währung1']}}" id="währung1" name="währung1">
+        <label for="währung2">Währung2:</label>
+        <input type="text" type="number" value="{{element['währung2']}}" id="währung2" name="währung2">
+        <label for="wechselkurs">wechselkurs:</label>
+        <input type="text" type="number"  value="{{element['wechselkurs']}}" id="wechselkurs" name="wechselkurs">
+        <br/>
+        <input type="submit" value="senden">
+    </form>
+    {% if element.__len__() > 0 %}
+    <div class="container">
+        <div class="row">
+            <div class="four columns">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>
+                                {{element['währung2']}}
+                            </th>
+                            <th>
+                                {{element['währung1']}}
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for key, value in element['table2'].items() %}
+                        <tr>
+                            <td>{{key}}</td>
+                            <td>{{value}}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="four columns">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>
+                                {{element['währung1']}}
+                            </th>
+                            <th>
+                                {{element['währung2']}}
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for key, value in element['table1'].items() %}
+                        <tr>
+                            <td>{{key}}</td>
+                            <td>{{value}}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+{% endblock %}

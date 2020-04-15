@@ -1,0 +1,12 @@
+angefangen um 09:10 noch offen vom Video = 15h 00min
+Feierabend gegn 17:00 noch offen vom Video 11h 15min
+
+tätigkeit:{
+	MUK-Saalplan fertig gegen geschaut,
+	Dekoratoren => verständnis sehr sehr gering, soll sachen zwischen speichern
+	"nonlocal" 
+	Datascience => Auswertung von großen Datenmengen.
+	Numpy(array erstellen, array filtern[unsicher], reshape, spape)
+	Pandas
+	Pandas Aufgabe baby.csv unvollständig
+}
