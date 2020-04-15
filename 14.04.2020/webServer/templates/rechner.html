@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<div>
+    <form method="post" action="/rechner">
+        <label for="betrag">Betrag:</label>
+        <input type="text" type="number" id="betrag" name="betrag">
+        <input type="button" value="senden">
+    </form>
+</div>
+
+{% endblock %}

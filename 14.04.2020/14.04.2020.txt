@@ -1,0 +1,9 @@
+angefangen um 08:00 noch offen vom Video = 17h 53min
+Feierabend gegn 17:30 noch offen vom Video 15h 00min
+
+tätigkeit:{
+	MUK-Saalplan gegen geschaut
+	sys Module, parameter entgegennahme bei script start,
+	os Modul, vergleichbar mit js path, + "listdir"!!!
+	flask
+}	
