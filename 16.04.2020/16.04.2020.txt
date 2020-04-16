@@ -1,0 +1,16 @@
+angefangen um 09:10 noch offen vom Video = 11h 15min
+Feierabend gegn 18:00 noch offen vom Video 09h 05min
+
+tätigkeit:{
+	fertigstellung baby.csv
+	machine learning (linear Regression)
+		siehe pandaaufgaben.py
+		weiters Beispiel baby.csv
+	Installation OpenCsv-Python
+	opencsv Farben umgewandelt von BRG <==> RGB
+	uint8 = unsign, intenger, 8bits
+	opencsv bild einlesen, Bild Helligkeit erhöhen/verringern
+	Bild in plt.imshow() und plt.show()
+	Rechteck in einem Bild zu zeichen extra Aufgabe siehe opencv.py
+	Gesichterkennung siehe gesichterkennung.py "nur die Functionen :D"
+}	
