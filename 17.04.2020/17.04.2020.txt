@@ -1,0 +1,11 @@
+angefangen um 08:45 noch offen vom Video = 09h 05min
+Feierabend gegn 18:00 noch offen vom Video 06h 13min
+
+tätigkeit/gelernt:{
+	installation von qts Creator, lange Installtionszeit,
+	qt und c++,
+	was ist qt und Benutzeroberfläche,
+	installation von pyqt und "qt for Python",
+	Positionierung von qt Elementen mit hilfe von Vertical space und Horizontal space,
+	Theorie wie wir die Elemente mit python ansprechen
+}
