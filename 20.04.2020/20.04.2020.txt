@@ -1,0 +1,12 @@
+angefangen um 08:45 noch offen vom Video = 06h 13min
+Feierabend gegn 17:20 noch offen vom Video 04h 25min
+
+tätigkeit:{
+    QT Creator Widget Desktop ansicht erstellen,
+    QT Signal und Slot manuell ansteuern und verknüpfen
+    Signal und Slots via python ansteuern,
+    via Python elemete von der xml Datei als Classe erstellen und in das Projekt einbinden, siehe 'build.py'
+    qtApp.py checkboxen ansteuern 'qtApp.py' Script bundlen siehe 'qtApp_bundle.py'
+    bmiRechner erstellt
+    Qt Tabellen cellen hinzufügen Signale und slot für änderung implementiert
+}
