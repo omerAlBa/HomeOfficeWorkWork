@@ -1,0 +1,8 @@
+angefangen um 08:45 noch offen vom Video = 04h 25min
+Feierabend gegn 17:20 noch offen vom Video 01h 01min
+
+tätigkeit:{
+    Aufgabe: ertslle mithilfe vo QT ein neues Projekt wo Studenten in einer Liste eingetragen werden.
+    Ein Button zum Speichern und um eine neuel Zelle hinzuzufügen.
+    Siehe app.py
+}
