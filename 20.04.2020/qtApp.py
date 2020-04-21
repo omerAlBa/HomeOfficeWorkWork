@@ -16,10 +16,10 @@ ui_window = Ui_MainWindow()
 ui_window.setupUi(window)
 
 
-def btn_klick():
+def btn_click():
     # print(ui_window.check_.__dir__())
     ui_window.check_.toggle()
-    print("Andree schaut zu")
+    print("clicked")
 
 ui_window.pushButton.clicked.connect(btn_klick)
 
