@@ -21,6 +21,6 @@ def btn_click():
     ui_window.check_.toggle()
     print("clicked")
 
-ui_window.pushButton.clicked.connect(btn_klick)
+ui_window.pushButton.clicked.connect(btn_click)
 
 sys.exit(app.exec_())
