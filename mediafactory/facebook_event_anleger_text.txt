@@ -1,0 +1,20 @@
+Facebook veranstaltung:
+
+Facebook create Event Div._4ixr
+1.) hole alle Elemente die man bearbeiten kann
+	--> ("._4ixr > div")
+		-> name of child divs = "_3875"
+		-> "_3875" child Classname = "_3878" only one dosn`t have a class
+		-> "_3878" child Classname = "_38mg clearfix _ikh" only one dosn`t have a class !V2
+	--> check if "Erforderliche Info" beinhaltet
+	--> True weiter zu 1.1, else nächstes Element abfragen!
+
+1.1)
+	-->
+
+
+
+
+Legende: {
+V2 = the div without CLASS and ID is for the "LOCATION"
+}
