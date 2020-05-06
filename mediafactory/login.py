@@ -4,8 +4,8 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver import ActionChains
 from time import sleep 
   
-usr='omera13@hotmail.de' 
-pwd='Milkaka13' 
+usr='de' 
+pwd='' 
 
 class MF():
     def __init__(this, user, password):
