@@ -1,11 +1,10 @@
 
 from selenium import webdriver 
 from selenium.webdriver.common.keys import Keys
-from selenium.webdriver import ActionChains
 from time import sleep 
-  
-usr='' 
-pwd='' 
+
+usr='holdthis@web.de' 
+pwd='qwertz11' 
 
 class MF():
     def __init__(this, user, password):
@@ -14,14 +13,11 @@ class MF():
         this.driver = webdriver.Chrome('chromedriver')
         this.event_Elements = {}
         this.log_in()
-        sleep(4)
+        sleep(6)
         this.objekt = this.init_eventElements()
-        for key in this.objekt.keys():
-            print(key)
         
     def init_eventElements(this):
         JSInit_Elements = """
-            
             const fn = function()
             {
                 const obj = {}
@@ -30,7 +26,6 @@ class MF():
                 const footer_className = "uiOverlayFooter"
 
                 const eventLayer = document.querySelector('div[class="_4t2a"]')
-
                 const fn2 = new Body(eventLayer.querySelector(`.${body_className}`))
                 obj['event_body'] = fn2.init()
                 
@@ -55,14 +50,19 @@ class MF():
                 {
                     if( element.innerHTML.contains('Erforderliche Information') ){
                         obj['basis'] = this.basis(element)
+                        console.log("obj['basis']: ",obj['basis'])
                     } else if (element.innerHTML.contains('Weitere Gastgeber')){
                         obj['weitere gastgeber'] = this.hoster(element)
+                        console.log("obj['weitere gastgeber']: ",obj['weitere gastgeber'])
                     } else if (element.innerHTML.contains('Füge weitere Infos')){
                         obj['weitere details'] = this.extended_details(element)
+                        console.log("obj['weitere details']: ",obj['weitere details'])
                     } else if (element.innerHTML.contains('Eintritt')){
                         obj['eintritt'] = this.entry(element)
+                        console.log("obj['eintritt']: ",obj['eintritt'])
                     } else if (element.innerHTML.contains('Optionen')){
                         obj['optionen'] = this.option(element)
+                        console.log("obj['optionen']: ",obj['optionen'])
                     }
             
                 }
@@ -72,9 +72,9 @@ class MF():
             Body.prototype.option = function(element)
             {
                 labelElements = this._ARRAY_(element.querySelectorAll(':nth-child(1) > label'))
-                return{
-                    "nachrichten erhalten" : labelElements.find(element => this.find('Messenger können Fragen')),
-                    "gästeliste anzeigen" : labelElements.find(element => this.find('Gästeliste anzeigen'))
+                return {
+                    "nachrichten erhalten" : labelElements.find(element => this.find(element,'Messenger können Fragen')),
+                    "gästeliste anzeigen" : labelElements.find(element => this.find(element, 'Gästeliste anzeigen'))
                 }
             }
 
@@ -117,7 +117,6 @@ class MF():
             Body.prototype.basis = function(element)
             {
                 const obj = {}
-                alert("basis wurde geklickt")
                 let basicData = this._ARRAY_(element.querySelectorAll(":scope > div"));
                 let bodyElements = basicData.find(element => element.innerHTML.contains("Ort"));
                 bodyElements = this._ARRAY_(bodyElements.querySelectorAll(":scope > div"));
@@ -134,7 +133,10 @@ class MF():
                 obj["beschreibung"] = bodyElements
                     .find(element => this.find(element,"Beschreibe anderen"))
                     .querySelector('div[class="notranslate _5rpu"]')
-                //obj["kategorie"] = bodyElements.find(element => this.find(element,"Beschreibe anderen"))
+                
+                obj["kategorie"] = bodyElements
+                    .find(element => this.find(element,"Kategorie auswählen"))
+                    .querySelector("a")
 
                 obj["zeit mangment"] = this.timeSpliter(this.basisSpliter( bodyElements.find(element => this.find(element,"Beginn")), "Beginn",2))
                 return obj
@@ -142,15 +144,15 @@ class MF():
             
             Body.prototype.find = function(element, getText)
             {
-                console.log(`find(): [ element: ${element}, getText: ${getText} ]`)
                 return element.innerHTML.contains(getText)
             }
 
-            Body.prototype.finder = function(_element_, {getText = "", getElement="", actionNeeded=false}={})
+            Body.prototype.finder = function(_element_, {getText = "", getElement=""}={})
             {
                 _element_
                     .find(element => element.innerHTML.contains(getText))
                     .querySelector(getElement)
+                    
             }
 
             Body.prototype.timeSpliter = function(elements)
@@ -194,27 +196,24 @@ class MF():
             }
         """
         this.driver.execute_script(JScript + " return fn() ")
+        
 
     def createEvent(this,kategorie="theater"):
-        JScript = """
-        const fn = function(text)
-            {
-                document.querySelector('._4ixr').querySelector("span[class='_55pe']").innerText = text
-            }
-             """
-        this.objekt["event_body"]['basis']["foto"].send_keys("C://Users/homer_000/Pictures/TERA_ScreenShots/img3.jpg")
-        this.objekt["event_body"]['basis']["name"].send_keys("Bla und so")
-        this.objekt["event_body"]['basis']["zeit mangment"]["startDatum"].send_keys(" 20.05.2020" + Keys.TAB)
-        this.objekt["event_body"]['basis']["zeit mangment"]["startZeit"].send_keys("02:00")
-        this.objekt["event_body"]['basis']["ort"].send_keys("Kiel")
-        this.objekt["event_body"]['basis']["zeit mangment"]["endeDatum"].send_keys(" 22.05.2020" + Keys.TAB)
-        this.objekt["event_body"]['basis']["zeit mangment"]["endeZeit"].send_keys("03:45")
-        this.objekt["event_body"]['basis']['beschreibung'].send_keys("so das reicht jetzt")
-        this.driver.execute_script(JScript + "fn('" + kategorie + "')")
-        this.objekt["event_body"]["weitere details"]["kinder geeignet"].click()
-        this.objekt["event_body"]["weitere gastgeber"].send_keys("Disco" + Keys.ENTER)
-        this.objekt["event_body"]["optionen"]["gästeliste anzeigen"].click()
-        this.objekt["event_end"]["entwurf"].click()
+        # this.objekt["event_body"]['basis']["foto"].send_keys("C://Users/homer_000/Pictures/TERA_ScreenShots/img3.jpg")
+        # this.objekt["event_body"]['basis']["name"].send_keys("Bla und so")
+        # this.objekt["event_body"]['basis']["zeit mangment"]["startDatum"].send_keys(" 20.05.2020" + Keys.TAB)
+        # this.objekt["event_body"]['basis']["zeit mangment"]["startZeit"].send_keys("02:00")
+        # this.objekt["event_body"]['basis']["ort"].send_keys("Kiel")
+        # this.objekt["event_body"]['basis']["zeit mangment"]["endeDatum"].send_keys(" 20.05.2020" + Keys.TAB)
+        # this.objekt["event_body"]['basis']["zeit mangment"]["endeZeit"].send_keys("03:45")
+        # this.objekt["event_body"]['basis']['beschreibung'].send_keys("so das reicht jetzt")
+        
+        # this.objekt["event_body"]["weitere details"]["kinder geeignet"].click()
+        # this.objekt["event_body"]["weitere gastgeber"].send_keys("Disco" + Keys.ENTER)
+        # this.objekt["event_body"]["optionen"]["gästeliste anzeigen"].click()
+        # this.objekt["event_end"]["entwurf"].click()
+        this.objekt["event_body"]['basis']['kategorie'].click()
+        this.objekt["event_body"]['basis']['kategorie'].send_keys(" tanz")
         
     def log_in(this):
         this.driver.get('https://www.facebook.com/')
@@ -232,7 +231,7 @@ class MF():
         login_box = this.driver.find_element_by_id('loginbutton') 
         login_box.click()
         sleep(3)
-        this.driver.get('https://www.facebook.com/Mfv-104578101237033/?modal=admin_todo_tour')
+        this.driver.get('https://www.facebook.com/Mf_tester-115283806854854/?modal=admin_todo_tour')
 
     def feed_post(this,message):
         status_box = this.driver.find_element_by_xpath('.//*[@name="xhpc_message"]')
