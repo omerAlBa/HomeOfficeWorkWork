@@ -1,0 +1,157 @@
+{% extends "base.html" %}
+
+{% load i18n media %}
+
+{% block title %}{% trans "booking error" %}{% endblock %}
+
+{% block extrahead %}
+<meta http-equiv="refresh" content="1140; url=/error/timeoutclient.asp">
+{% endblock %}
+
+{% block content %}
+<form name="daten" method="post" action="" enctype="application/x-www-form-urlencoded">
+<table>
+  {% getCurrentProtocol form.as_table %}
+</table>
+</form>
+{% endblock %}
+
+{% block script %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+  function decodeEntities(encodedString) {
+    var translate_re = /&(nbsp|amp|quot|lt|gt);/g;
+    var translate = { "nbsp":" ", "amp" : "&", "quot": "\"", "lt"  : "<","gt"  : ">"};
+
+    return encodedString.replace(translate_re, function(match, entity) {
+        return translate[entity];
+    }).replace(/&#(\d+);/gi, function(match, numStr) {
+        var num = parseInt(numStr, 10);
+        return String.fromCharCode(num);
+    });
+  }
+
+  function convertToJson(parameterString){
+    return  ("'{" + parameterString.replace(/&/g,",").replace(/=/g,":") + "}'")
+  }
+
+  document.querySelector('a[href="javascript: document.daten.submit()"]').addEventListener('click',function(event){
+    listenToSubmit(event)
+  })
+  // var bla = decodeEntities("{{ request.session.bagarino_custeromer_object }}").split("&")
+  // var newArray = [], obj = {}
+  // for (var iterator of bla) {
+  //   var twoD_array = iterator.split("=")
+  //   obj[twoD_array[0]] = decodeURI(twoD_array[1])
+  // }
+
+  // console.log(obj)
+
+	function init() {
+		try {external.setCaption('{% trans "booking error" %}') } catch(e) {};
+	}
+
+  function loadWarenkorb() {
+	}
+
+  function doTrash() {
+  }
+
+  function listenToSubmit(event){
+      var pathname = window.location.pathname
+      var dict = {}
+      // connecte speicher Button mit der ganzen Aktion!
+
+      var getEntry = function(){ // get all lable text and get the related input Element, store them as key(label) and as value(input) 
+          var single_Table_Element = document.querySelector('table')
+          var list_Tr = single_Table_Element.querySelectorAll('tr')
+          for (var index = 0; index < list_Tr.length; index++) {
+              var element = list_Tr[index];
+              if(pathname === "/customer/list.asp"){
+                var dom_element = element.querySelector('input') || element.querySelector('select')
+                dict[element.querySelector('label').innerText.replace(":","").toLowerCase().trim()] = dom_element.value
+              } else if(pathname === "/tickets/list.asp") {
+                dict[element.querySelector('label').innerText.replace(":","").toLowerCase()] = element.querySelector('input')
+              }
+          } 
+          return dict
+      }
+
+      var storageData = function(obj){ // store them into sessionStorage
+          // Jquery test
+          $.ajax({
+            url: '',
+            type: 'POST',
+            contentType: 'application/json; charset=utf-8',
+            data: JSON.stringify(obj),
+            dataType: 'json',
+            success: function(result) {
+                alert(result.Result);
+            }
+        });
+      }
+
+      var entryInsert = function(obj_differntName,session_objct){
+          // which elements are avaible
+          for (var key in obj_differntName) {
+              if (obj_differntName[key] !== null) {
+                  
+                  var resultList = translate(key);
+                  if(resultList !== undefined){ //get the right <lable>text to use!
+
+                      for (var index = 0; index < resultList.length; index++) {
+                          session_objct[resultList[index]] ? obj_differntName[key].value = session_objct[resultList[index]] : ""
+                      }
+
+                  }
+
+              }// end of <if>
+          } // end of <for>
+      }// end of <function-entryInsert>
+
+      var translate = function(key){
+          var list = [
+              ["tele","telefon","mobile","handy","phone"],
+              ["straße","strasse","str","street"],
+              ["name","nachname"],
+              ["vorname"],
+              ["postleitzahl","plz","pobox"],
+              ["stadt","ort","city"],
+              ["email","e-mail","mail","emailadresse","mailadresse","e-mail-adresse"]
+          ];
+
+          for (var index = 0; index < list.length; index++) {
+              var subArray = list[index];
+              if(subArray.indexOf(key) > -1){
+                  return subArray
+              }
+          }
+          return false
+      }  // end of <function-translate>
+
+      if (pathname === "/tickets/list.asp") {
+          // inserte Data
+          var obj_differntName = getEntry();
+          var _1D_Array = decodeEntities("{{ request.session.bagarino_custeromer_object }}").split("&")
+          var newArray = [], obj = {}
+
+          for (var element of _1D_Array) {
+            var _2D_Array = element.split("=")
+            obj[_2D_Array[0]] = decodeURI(_2D_Array[1])
+          }
+
+          entryInsert(obj_differntName);
+          console.log(`Daten worden insertet!`)
+      } else {
+          // get Data
+          var obj = getEntry(event);
+          storageData(obj);
+          console.log("was ist denn hier los?")
+          console.log("Bei der Aufnahme: {{ request.session.bagarino_custeromer_object }}")
+          console.log("Daten worden aufgenommen")
+      }
+  }
+
+</script>
+
+{% endblock %}

@@ -1,0 +1,236 @@
+{% extends "base.html" %}
+
+{% load i18n media %}
+
+{% block title %}{% trans "ticket data" %}{% endblock %}
+
+{% block extrahead %}
+<meta http-equiv="refresh" content="1140; url=/error/timeoutclient.asp">
+{% endblock %}
+
+{% block content %}
+{% if rows %}
+<p style="color: red;">{% trans "Additional information for your tickets are needed. Please fill in the following fields for " %} {{ rows|length }} {% trans "tickets" %}.</p>
+{% endif %}
+<form name="daten" method="post" action="" enctype="application/x-www-form-urlencoded">
+  {% for row in rows %}
+    {% ifchanged row.event %}<h3>{{ row.event }}</h3>{% endifchanged %}
+    {{ row.seat }} - {{ row.price_area }}<br />
+    <table>
+      {% getCurrentProtocol row.form.as_table %}
+    </table>
+    <br />
+  {% empty %}
+  {% trans "there are no tickets, that need additional data" %}
+  {% endfor %}
+</form>
+{% endblock %}
+
+{% block script %}
+<script type="text/javascript">
+	function init() {
+		try {external.setCaption('{% trans "ticket data" %}') } catch(e) {};
+    $('content').style.height = window.document.body.clientHeight - 50 + 'px';
+    $('content').style.overflowX = 'hidden';
+    $('content').style.overflowY = 'scroll';
+	}
+
+  
+
+  function loadWarenkorb() {
+	}
+
+  function doTrash() {
+    window.location.href = '/tickets/list.asp?clean=1'
+  }
+
+
+</script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    
+    listenToSubmit(event)
+  
+    // bind jQuery to <iFrame></iFrame>
+    if (typeof(jQuery) == "undefined") {
+        var iframeBody = document.getElementsByTagName("body")[0];
+        var jQuery = function (selector) { return parent.jQuery(selector, iframeBody); };
+        var $ = jQuery;
+    }
+    // end of bind
+
+    if( !($('table')) ) {return}
+    if( $('table').length < 1 ) {return}
+
+    var getPreviousElement = function(elementName,elementPosition){
+        var resultElement = document.querySelector('tr[data-name="'+elementName+'"][data-position="'+(parseInt(elementPosition)-1)+'"]')
+        return resultElement
+    }
+
+    var copyAction = function(event){
+        var attributes = _getAttribute_(event.target)
+        // console.log("attributes: ",attributes); √
+
+        var currentElement = document.querySelector('tr[data-name="'+attributes.name+'"][data-position="'+attributes.position+'"]')
+        var previousElement = getPreviousElement(attributes.name,attributes.position)
+        // pass value of previous element to current element
+        $(currentElement).find('input').val($(previousElement).find('input').val());
+        event.preventDefault();
+    }
+
+    var prepareText = function(singLabel){ return singLabel.innerText.replace('*','').trim() }
+
+    var _getAttribute_ = function(element){
+        return {
+            "name": element.getAttribute('data-name'),
+            "position": element.getAttribute('data-position')
+        }
+    }
+
+    var _setAttribute_ = function(element,attribute_index,attribute_name){
+        element.setAttribute('data-position',attribute_index)
+        element.setAttribute('data-name',attribute_name)
+        if (attribute_index > 1) {
+            // insert new Button Element to Class = "control-group" and assign an listener
+            // /img/icons/copy.gif
+            $(element).append( 
+                $('<button class="copy-data" data-name='+attribute_name+' data-position='+attribute_index+'><img src="/img/icons/copy_upper.png" data-name='+attribute_name+' data-position='+attribute_index+'></img></button>')
+                    .click( copyAction )         
+            )
+            $('.copy-data[data-name='+attribute_name+'][data-position='+attribute_index+']').css({"border":"none","background-color":"transparent","display":"inline-block"})
+            $('img[data-name='+attribute_name+'][data-position='+attribute_index+']').css({"width":"18px","height":"18px","cursor":"pointer"})
+        }
+    }
+
+    var marker_and_group_elements = function(wrapperList,labelList){
+        $(labelList).each(function(index){
+            var labelText = prepareText(labelList[index])
+            
+            if ( !(labelText in dict) ) { dict[labelText] =  [] }
+            dict[labelText].push( wrapperList[index] )
+            
+            _setAttribute_(wrapperList[index],dict[labelText].length,labelText)
+        });
+    }
+
+    var dict = {}
+    var listOfElements = $('tr')
+
+    // $(".container").on("submit","#data",function(event){ event.preventDefault() });
+    marker_and_group_elements($(listOfElements),$(listOfElements).find('label')) 
+  });
+
+  function decodeEntities(encodedString) {
+    var translate_re = /&(nbsp|amp|quot|lt|gt);/g;
+    var translate = { "nbsp":" ", "amp" : "&", "quot": "\"", "lt"  : "<","gt"  : ">"};
+
+    return encodedString.replace(translate_re, function(match, entity) {
+        return translate[entity];
+    }).replace(/&#(\d+);/gi, function(match, numStr) {
+        var num = parseInt(numStr, 10);
+        return String.fromCharCode(num);
+    });
+  }
+
+  function convertToJson(parameterString){
+    return  ("'{" + parameterString.replace(/&/g,",").replace(/=/g,":") + "}'")
+  }
+
+  function listenToSubmit(event){
+      var pathname = window.location.pathname
+      var dict = {}
+      // connecte speicher Button mit der ganzen Aktion!
+
+      var getEntry = function(){ // get all lable text and get the related input Element, store them as key(label) and as value(input) 
+          var single_Table_Element = document.querySelector('table')
+          var list_Tr = single_Table_Element.querySelectorAll('tr')
+          for (var index = 0; index < list_Tr.length; index++) {
+              var element = list_Tr[index];
+              if(pathname === "/customer/list.asp"){
+                var dom_element = element.querySelector('input') || element.querySelector('select')
+                dict[element.querySelector('label').innerText.replace(":","").toLowerCase().trim()] = dom_element.value
+              } else if(pathname === "/tickets/list.asp") {
+                dict[element.querySelector('label').innerText.replace(":","").toLowerCase()] = element.querySelector('input')
+              }
+          } 
+          return dict
+      }
+
+      var storageData = function(obj){ // store them into sessionStorage
+          // Jquery test
+          $.ajax({
+            url: '',
+            type: 'POST',
+            contentType: 'application/json; charset=utf-8',
+            data: JSON.stringify(obj),
+            dataType: 'json',
+            success: function(result) {
+                alert(result.Result);
+            }
+        });
+      }
+
+      var entryInsert = function(obj_differntName,session_objct){
+          // which elements are avaible
+          for (var key in obj_differntName) {
+              if (obj_differntName[key] !== null) {
+                  
+                  var resultList = translate(key);
+                  console.log("resultList: ",resultList)
+                  if(resultList !== undefined){ //get the right <lable>text to use!
+                    console.log(session_objct[resultList])
+                      for (var index = 0; index < resultList.length; index++) {
+                          session_objct[resultList[index]] ? obj_differntName[key].value = session_objct[resultList[index]] : ""
+                      }
+                  }
+
+              }// end of <if>
+          } // end of <for>
+      }// end of <function-entryInsert>
+
+      var translate = function(key){
+          var list = [
+              ["tele","telefon","mobile","handy","phone"],
+              ["straße","strasse","str","street"],
+              ["name","nachname"],
+              ["vorname"],
+              ["postleitzahl","plz","pobox"],
+              ["stadt","ort","city"],
+              ["email","e-mail","mail","emailadresse","mailadresse","e-mail-adresse"]
+          ];
+
+          for (var index = 0; index < list.length; index++) {
+              var subArray = list[index];
+              if(subArray.indexOf(key) > -1){
+                  return subArray
+              }
+          }
+          return false
+      }  // end of <function-translate>
+
+      if (pathname === "/tickets/list.asp") {
+          // inserte Data
+          if ( !(document.querySelector('table')) ) { return false }
+
+          var obj_differntName = getEntry();
+          var _1D_Array = decodeEntities("{{ request.session.bagarino_custeromer_object }}").split("&")
+          var newArray = [], session_objct = {}
+          console.log("_1D_Array: ","{{ request.session.bagarino_custeromer_object }}")
+          for (var element of _1D_Array) {
+            var _2D_Array = element.split("=")
+            session_objct[_2D_Array[0]] = decodeURI(_2D_Array[1])
+          }
+          console.log("session_objct: ",session_objct)
+          entryInsert(obj_differntName,session_objct);
+          console.log(`Daten worden insertet!`)
+      } else if(pathname === "/customer/list.asp") {
+          // get Data
+          var obj = getEntry(event);
+          storageData(obj);
+          console.log("Daten worden aufgenommen")
+      }
+  }
+</script>
+
+{% endblock %}
