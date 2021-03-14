@@ -1,13 +1,9 @@
-//unfertig, funktioniert einfach nicht
+// fertige Version
 
 function EventListener(){
     this.events = {}
-    
-    this.action = ()=>{
-        let a = 1+1
-        this.trigger("hub",a)
-     }
-    
+
+    // actionen werden hier gespeichert
      this.link = (eventName,action)=>{
 
         if (!(eventName in this.events)) {
@@ -16,21 +12,13 @@ function EventListener(){
         this.events[eventName].push(action)
         
     }
-
+    // event wird gefeuert
     this.trigger = function(eventName,element){
-        console.log("hier ist trigger");
         
         if (eventName in this.events) {
             this.events[eventName].forEach((function_) => {
               function_(element)
             });
-          }
+        }
     }
 }
-
-
-EventListener.link("hub",(a)=>{
-    console.log("bin drinne", a);
-});
-
-EventListener.action()
